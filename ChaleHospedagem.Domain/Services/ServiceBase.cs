@@ -17,9 +17,9 @@ namespace ChaleHospedagem.Domain.Services
             this.repository = repository;
         }
 
-        public void Add(TEntity obj)
+        public bool Add(TEntity obj)
         {
-            repository.Add(obj);
+            return repository.Add(obj);
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -32,14 +32,14 @@ namespace ChaleHospedagem.Domain.Services
             return repository.GetById(id);
         }
 
-        public void Remove(TEntity obj)
+        public bool Remove(TEntity obj)
         {
-            repository.Remove(obj);
+            return repository.Remove(obj);
         }
 
-        public void Update(TEntity obj)
+        public bool Update(TEntity obj)
         {
-            repository.Update(obj);
+            return repository.Update(obj);
         }
     }
 }

@@ -31,53 +31,66 @@ namespace ChaleHospedagem.Infrastructure.Repositories
             }
         }
 
-
-        public void Add(Chale obj)
+        public bool Add(Chale obj)
         {
+            bool success = false;
             var sql = string.Format("INSERT INTO {0} (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES('{1}', {2}, {3}, {4})",
                                     tableName,
                                     obj.localizacao,
                                     obj.capacidade,
-                                    (double)obj.valorAltaEstacao,
-                                    (double)obj.valorBaixaEstacao);
+                                    obj.valorAltaEstacao,
+                                    obj.valorBaixaEstacao);
 
-            
-            bool success = db.Execute(sql) > 0;
+            try
+            {
+                success = db.Execute(sql) > 0;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return success;
         }
+
 
         public IEnumerable<Chale> GetAll()
         {
-            var sql = string.Format("SELECT * FROM {0}", tableName);
-            var result = db.Query<Chale>(sql);
+            var query = string.Format("SELECT * FROM {0}", tableName);
+            var result = db.Query<Chale>(query);
             return result;
         }
 
 
         public Chale GetById(int id)
         {
-            var sql = string.Format("SELECT * FROM {0} WHERE codChale = {1}", tableName, id);
-            var result = db.Query<Chale>(sql).SingleOrDefault();
+            var query = string.Format("SELECT * FROM {0} WHERE codChale = {1}", tableName, id);
+            var result = db.Query<Chale>(query).SingleOrDefault();
             return result;
         }
 
-        public void Remove(Chale obj)
+        public bool Remove(Chale obj)
         {
-            var sql = string.Format("DELETE FROM {0} WHERE codChale = {1}",
+            bool success = false;
+            var query = string.Format("DELETE FROM {0} WHERE codChale = {1}",
                                     tableName,
                                     obj.codChale);
-            
-            var query = string.Format("DELETE FROM {0} WHERE codChale = @codChale", tableName);
 
-            var parameters = new DynamicParameters();
-            parameters.Add("codChale", obj.codChale, DbType.Int64);
+            try
+            {
+                success = db.Execute(query) > 0;
+            }
+            catch (Exception ex)
+            {
 
-            var teste = db.Query<Chale>(query, parameters).FirstOrDefault();
-            bool success = db.Execute(query, parameters) > 0;
+            }
 
+            return success;
         }
 
-        public void Update(Chale obj)
+        public bool Update(Chale obj)
         {
+            bool success = false;
             var query = "UPDATE " + tableName + " SET localizacao = @localizacao, capacidade = @capacidade, valorAltaEstacao = @valorAltaEstacao, valorBaixaEstacao = @valorBaixaEstacao WHERE codChale = @codChale";
 
             var parameters = new DynamicParameters();
@@ -86,8 +99,17 @@ namespace ChaleHospedagem.Infrastructure.Repositories
             parameters.Add("capacidade", obj.capacidade, DbType.Int64);
             parameters.Add("valorAltaEstacao", obj.valorAltaEstacao, DbType.Double);
             parameters.Add("valorBaixaEstacao", obj.valorBaixaEstacao, DbType.Double);
-            
-            bool success = db.Execute(query, parameters) > 0;
+
+            try
+            {
+                success = db.Execute(query, parameters) > 0;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return success;
         }
     }
 }

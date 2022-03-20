@@ -22,37 +22,32 @@ namespace ChaleHospedagem.API.Controllers
         [HttpPost("Add")]
         public JsonResult Add(Chale chale)
         {
-            _serviceChale.Add(chale);
-            return new JsonResult(true);
+            return new JsonResult(_serviceChale.Add(chale));
         }
 
         [HttpGet("GetAll")]
         public JsonResult GetAll()
         {
-            var result = _serviceChale.GetAll();
-            return new JsonResult(result);
+            return new JsonResult(_serviceChale.GetAll());
         }
 
         [HttpGet("GetById")]
         public JsonResult GetById(int id)
         {
-            var result = _serviceChale.GetById(id);
-            return new JsonResult(result);
+            return new JsonResult(_serviceChale.GetById(id));
         }
 
 
         [HttpPut("Update")]
         public JsonResult Update(Chale chale)
         {
-            _serviceChale.Update(chale);
-            return new JsonResult(true);
+            return new JsonResult(_serviceChale.Update(chale));
         }
 
         [HttpDelete("Remove")]
         public JsonResult Remove(Chale chale)
         {
-            _serviceChale.Remove(chale);
-            return new JsonResult(true);
+            return new JsonResult(_serviceChale.Remove(chale));
         }
 
     }

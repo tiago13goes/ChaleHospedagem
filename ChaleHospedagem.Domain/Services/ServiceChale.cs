@@ -20,9 +20,9 @@ namespace ChaleHospedagem.Domain.Services
         }
 
 
-        public void Add(Chale obj)
+        public bool Add(Chale obj)
         {
-            _repository.Add(obj);
+            return _repository.Add(obj);
         }
 
         public IEnumerable<Chale> GetAll()
@@ -35,14 +35,14 @@ namespace ChaleHospedagem.Domain.Services
             return _repository.GetById(id);
         }
 
-        public void Remove(Chale obj)
+        public bool Remove(Chale obj)
         {
-            _repository.Remove(obj);
+            return _repository.Remove(obj);
         }
 
-        public void Update(Chale obj)
+        public bool Update(Chale obj)
         {
-            _repository.Update(obj);
+            return _repository.Update(obj);
         }
     }
 }

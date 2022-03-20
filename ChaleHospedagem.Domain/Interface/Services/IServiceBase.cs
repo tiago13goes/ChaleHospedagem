@@ -8,11 +8,11 @@ namespace ChaleHospedagem.Domain.Interface.Service
 {
     public interface IServiceBase<TEntity> where TEntity : class
     {
-        void Add(TEntity obj);
+        bool Add(TEntity obj);
 
-        void Update(TEntity obj);
+        bool Update(TEntity obj);
 
-        void Remove(TEntity obj);
+        bool Remove(TEntity obj);
 
         IEnumerable<TEntity> GetAll();
 
