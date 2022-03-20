@@ -41,7 +41,8 @@ namespace ChaleHospedagem.Infrastructure.Repositories
                                     (double)obj.valorAltaEstacao,
                                     (double)obj.valorBaixaEstacao);
 
-            Chale result = db.Query<Chale>(sql).FirstOrDefault();
+            
+            bool success = db.Execute(sql) > 0;
         }
 
         public IEnumerable<Chale> GetAll()
@@ -50,6 +51,7 @@ namespace ChaleHospedagem.Infrastructure.Repositories
             var result = db.Query<Chale>(sql);
             return result;
         }
+
 
         public Chale GetById(int id)
         {
@@ -60,24 +62,32 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public void Remove(Chale obj)
         {
-            var sql = string.Format("DELETE FROM {0} WHERE codChale = {1}", tableName, obj.codChale);
-            var result = db.Query<Chale>(sql).FirstOrDefault();
+            var sql = string.Format("DELETE FROM {0} WHERE codChale = {1}",
+                                    tableName,
+                                    obj.codChale);
+            
+            var query = string.Format("DELETE FROM {0} WHERE codChale = @codChale", tableName);
+
+            var parameters = new DynamicParameters();
+            parameters.Add("codChale", obj.codChale, DbType.Int64);
+
+            var teste = db.Query<Chale>(query, parameters).FirstOrDefault();
+            bool success = db.Execute(query, parameters) > 0;
+
         }
 
         public void Update(Chale obj)
         {
-            var sql = string.Format("UPDATE {0} SET localizacao = '{1}', capacidade = {2}, valorAltaEstacao = {3}, valorBaixaEstacao = {4} WHERE codChale = {5}",
-                                   this.tableName,
-                                   obj.localizacao,
-                                   obj.capacidade,
-                                   obj.valorAltaEstacao,
-                                   obj.valorBaixaEstacao,
-                                   obj.codChale
-                                   );
+            var query = "UPDATE " + tableName + " SET localizacao = @localizacao, capacidade = @capacidade, valorAltaEstacao = @valorAltaEstacao, valorBaixaEstacao = @valorBaixaEstacao WHERE codChale = @codChale";
 
-            var result = db.QueryFirstOrDefault<dynamic>(sql);
+            var parameters = new DynamicParameters();
+            parameters.Add("codChale", obj.codChale, DbType.Int64);
+            parameters.Add("localizacao", obj.localizacao, DbType.String);
+            parameters.Add("capacidade", obj.capacidade, DbType.Int64);
+            parameters.Add("valorAltaEstacao", obj.valorAltaEstacao, DbType.Double);
+            parameters.Add("valorBaixaEstacao", obj.valorBaixaEstacao, DbType.Double);
             
-
+            bool success = db.Execute(query, parameters) > 0;
         }
     }
 }
