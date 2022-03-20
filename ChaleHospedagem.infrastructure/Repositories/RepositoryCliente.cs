@@ -12,11 +12,17 @@ using Dapper;
 
 namespace ChaleHospedagem.infrastructure.Repositories
 {
-    public class RepositoryCliente : IRepositoryCliente
+    public class GetEntityName<Tentity>
+    {
+
+    }
+
+    public class RepositoryCliente : IRepositoryBase
     {
         private IDbConnection db;
         private string tableName = "Cliente";
         private readonly IConfiguration _configuration;
+
 
         public RepositoryCliente(IConfiguration configuration)
         {
@@ -34,8 +40,8 @@ namespace ChaleHospedagem.infrastructure.Repositories
             catch (Exception ex)
             {
             }
-            
-            
+
+
             var sql = "SELECT * FROM " + tableName;
             IEnumerable<Cliente> result = null;
 
@@ -72,6 +78,66 @@ namespace ChaleHospedagem.infrastructure.Repositories
         }
     }
 
+    //public class RepositoryCliente : IRepositoryCliente
+    //{
+    //    private IDbConnection db;
+    //    private string tableName = "Cliente";
+    //    private readonly IConfiguration _configuration;
 
-  
+    //    public RepositoryCliente(IConfiguration configuration)
+    //    {
+    //        _configuration = configuration;
+    //    }
+
+
+    //    public IEnumerable<Cliente> GetAll()
+    //    {
+    //        var connection = _configuration.GetConnectionString("DefaultConnection");
+    //        try
+    //        {
+    //            this.db = new SqlConnection(connection);
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //        }
+
+
+    //        var sql = "SELECT * FROM " + tableName;
+    //        IEnumerable<Cliente> result = null;
+
+    //        try
+    //        {
+    //            result = this.db.Query<Cliente>(sql);
+    //        }
+    //        catch (Exception ex)
+    //        {
+
+    //        }
+    //        return result;
+    //    }
+
+
+    //    public void Add(Cliente obj)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public Cliente GetById(int id)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public void Remove(Cliente obj)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public void Update(Cliente obj)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
+
+
+
 }

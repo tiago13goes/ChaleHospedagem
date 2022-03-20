@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChaleHospedagem.Domain\ChaleHospedagem.Domain.csproj" />
+    <ProjectReference Include="..\ChaleHospedagem.infrastructure\ChaleHospedagem.infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

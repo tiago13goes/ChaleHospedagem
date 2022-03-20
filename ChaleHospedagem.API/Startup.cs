@@ -1,5 +1,7 @@
+using ChaleHospedagem.Domain.Interface.Repositories;
 using ChaleHospedagem.Domain.Interface.Repository;
 using ChaleHospedagem.Domain.Interface.Service;
+using ChaleHospedagem.Domain.Interface.Services;
 using ChaleHospedagem.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +31,7 @@ namespace ChaleHospedagem.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //services.AddDbContext<AppicationDbContext>(options=>options.UseSqlServer())
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -39,17 +41,20 @@ namespace ChaleHospedagem.API
             RegistrarDependencias(services);
         }
 
+
         public void RegistrarDependencias(IServiceCollection services)
         {
             #region Servicos
 
             services.AddScoped<IServiceCliente, ServiceCliente>();
+            services.AddScoped<IServiceChale, ServiceChale>();
 
             #endregion
 
             #region Repositório
 
-            services.AddScoped<IRepositoryCliente, IRepositoryCliente>();
+            //services.AddScoped<IRepositoryCliente, RepositoryCliente>();
+            services.AddScoped<IRepositoryChale, RepositoryChale>(); //why RepositoryChale is not being referenced????
 
 
             #endregion
