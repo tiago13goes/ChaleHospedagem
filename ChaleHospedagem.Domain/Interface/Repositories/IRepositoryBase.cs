@@ -12,11 +12,11 @@ namespace ChaleHospedagem.Domain.Interface.Repository
 
         bool Update(TEntity obj);
 
-        bool Remove(TEntity obj);
+        bool Remove(int cod);
 
         IEnumerable<TEntity> GetAll();
 
-        TEntity GetById(int id);
+        TEntity GetByCod(int cod);
     }
 
 }

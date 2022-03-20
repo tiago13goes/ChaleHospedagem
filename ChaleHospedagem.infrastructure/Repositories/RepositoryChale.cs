@@ -62,19 +62,19 @@ namespace ChaleHospedagem.Infrastructure.Repositories
         }
 
 
-        public Chale GetById(int id)
+        public Chale GetByCod(int cod)
         {
-            var query = string.Format("SELECT * FROM {0} WHERE codChale = {1}", tableName, id);
+            var query = string.Format("SELECT * FROM {0} WHERE codChale = {1}", tableName, cod);
             var result = db.Query<Chale>(query).SingleOrDefault();
             return result;
         }
 
-        public bool Remove(Chale obj)
+        public bool Remove(int cod)
         {
             bool success = false;
             var query = string.Format("DELETE FROM {0} WHERE codChale = {1}",
                                     tableName,
-                                    obj.codChale);
+                                    cod);
 
             try
             {

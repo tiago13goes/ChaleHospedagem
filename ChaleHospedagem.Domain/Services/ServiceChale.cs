@@ -30,14 +30,14 @@ namespace ChaleHospedagem.Domain.Services
             return _repository.GetAll();
         }
 
-        public Chale GetById(int id)
+        public Chale GetByCod(int cod)
         {
-            return _repository.GetById(id);
+            return _repository.GetByCod(cod);
         }
 
-        public bool Remove(Chale obj)
+        public bool Remove(int cod)
         {
-            return _repository.Remove(obj);
+            return _repository.Remove(cod);
         }
 
         public bool Update(Chale obj)

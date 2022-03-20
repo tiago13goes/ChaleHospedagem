@@ -16,7 +16,7 @@ namespace ChaleHospedagem.API.Controllers
         
         public ChaleController(IServiceChale serviceChale)
         {
-            _serviceChale = serviceChale;
+            _serviceChale = serviceChale;  
         }
 
         [HttpPost("Add")]
@@ -34,7 +34,7 @@ namespace ChaleHospedagem.API.Controllers
         [HttpGet("GetById")]
         public JsonResult GetById(int id)
         {
-            return new JsonResult(_serviceChale.GetById(id));
+            return new JsonResult(_serviceChale.GetByCod(id));
         }
 
 
@@ -45,9 +45,9 @@ namespace ChaleHospedagem.API.Controllers
         }
 
         [HttpDelete("Remove")]
-        public JsonResult Remove(Chale chale)
+        public JsonResult Remove(int cod)
         {
-            return new JsonResult(_serviceChale.Remove(chale));
+            return new JsonResult(_serviceChale.Remove(cod));
         }
 
     }

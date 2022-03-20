@@ -27,14 +27,14 @@ namespace ChaleHospedagem.Domain.Services
             return repository.GetAll();
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetByCod(int cod)
         {
-            return repository.GetById(id);
+            return repository.GetByCod(cod);
         }
 
-        public bool Remove(TEntity obj)
+        public bool Remove(int cod)
         {
-            return repository.Remove(obj);
+            return repository.Remove(cod);
         }
 
         public bool Update(TEntity obj)
