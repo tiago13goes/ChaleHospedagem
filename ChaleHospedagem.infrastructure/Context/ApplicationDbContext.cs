@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChaleHospedagem.infrastructure.Context
+namespace ChaleHospedagem.Infrastructure.Context
 {
     public class ApplicationDbContext : DbContext
     {

@@ -3,6 +3,7 @@ using ChaleHospedagem.Domain.Interface.Repository;
 using ChaleHospedagem.Domain.Interface.Service;
 using ChaleHospedagem.Domain.Interface.Services;
 using ChaleHospedagem.Domain.Services;
+using ChaleHospedagem.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//using ChaleHospedagem.Infrastructure;
 
 namespace ChaleHospedagem.API
 {
@@ -46,7 +48,7 @@ namespace ChaleHospedagem.API
         {
             #region Servicos
 
-            services.AddScoped<IServiceCliente, ServiceCliente>();
+            //services.AddScoped<IServiceCliente, ServiceCliente>();
             services.AddScoped<IServiceChale, ServiceChale>();
 
             #endregion

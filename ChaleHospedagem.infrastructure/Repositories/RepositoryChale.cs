@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChaleHospedagem.infrastructure.Context;
+using ChaleHospedagem.Infrastructure.Context;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using Dapper;
 
-namespace ChaleHospedagem.infrastructure.Repositories
+namespace ChaleHospedagem.Infrastructure.Repositories
 {
     public class RepositoryChale : IRepositoryChale
     {

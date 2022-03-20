@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaleHospedagem.API", "ChaleHospedagem.API\ChaleHospedagem.API.csproj", "{B647F7A0-E43C-430D-A823-EF24D55D91BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaleHospedagem.infrastructure", "ChaleHospedagem.infrastructure\ChaleHospedagem.infrastructure.csproj", "{9BEFC5A0-491C-4D3A-9709-5D3D4ED8C3AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaleHospedagem.Infrastructure", "ChaleHospedagem.infrastructure\ChaleHospedagem.Infrastructure.csproj", "{9BEFC5A0-491C-4D3A-9709-5D3D4ED8C3AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaleHospedagem.Domain", "ChaleHospedagem.Domain\ChaleHospedagem.Domain.csproj", "{D6EC39B9-F3A6-494C-90E4-734B0731FC08}"
 EndProject
