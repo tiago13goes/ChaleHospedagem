@@ -8,15 +8,19 @@ using System.Threading.Tasks;
 
 namespace ChaleHospedagem.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ChaleController : Controller
     {
         private readonly IServiceChale _serviceChale;
         
+
         public ChaleController(IServiceChale serviceChale)
         {
             _serviceChale = serviceChale;
         }
 
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             this.Add();
@@ -24,6 +28,7 @@ namespace ChaleHospedagem.API.Controllers
         }
 
 
+        [HttpGet("Add")]
         public IActionResult Add()
         {
             Chale chale = new Chale()

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChaleHospedagem.Infrastructure.Context;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
@@ -20,8 +19,14 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public RepositoryChale(IConfiguration configuration)
         {
-            var configurationR = configuration.GetConnectionString("DefaultConnection");
-            this.db = new SqlConnection(configurationR);
+            try
+            {
+                this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
 
