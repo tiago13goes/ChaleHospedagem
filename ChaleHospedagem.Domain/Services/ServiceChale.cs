@@ -23,27 +23,26 @@ namespace ChaleHospedagem.Domain.Services
         public void Add(Chale obj)
         {
             _repository.Add(obj);
-            throw new NotImplementedException();
         }
 
         public IEnumerable<Chale> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         public Chale GetById(int id)
         {
-            throw new NotImplementedException();
+            return _repository.GetById(id);
         }
 
         public void Remove(Chale obj)
         {
-            throw new NotImplementedException();
+            _repository.Remove(obj);
         }
 
         public void Update(Chale obj)
         {
-            throw new NotImplementedException();
+            _repository.Update(obj);
         }
     }
 }

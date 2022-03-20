@@ -14,33 +14,45 @@ namespace ChaleHospedagem.API.Controllers
     {
         private readonly IServiceChale _serviceChale;
         
-
         public ChaleController(IServiceChale serviceChale)
         {
             _serviceChale = serviceChale;
         }
 
-        [HttpGet("Index")]
-        public IActionResult Index()
+        [HttpPost("Add")]
+        public JsonResult Add(Chale chale)
         {
-            this.Add();
-            return View();
+            _serviceChale.Add(chale);
+            return new JsonResult(true);
+        }
+
+        [HttpGet("GetAll")]
+        public JsonResult GetAll()
+        {
+            var result = _serviceChale.GetAll();
+            return new JsonResult(result);
+        }
+
+        [HttpGet("GetById")]
+        public JsonResult GetById(int id)
+        {
+            var result = _serviceChale.GetById(id);
+            return new JsonResult(result);
         }
 
 
-        [HttpGet("Add")]
-        public IActionResult Add()
+        [HttpPut("Update")]
+        public JsonResult Update(Chale chale)
         {
-            Chale chale = new Chale()
-            {
-                capacidade = 1,
-                localizacao = "São Paulo - SP",
-                valorAltaEstacao = 120.99,
-                valorBaixaEstacao = 99.99
-            };
+            _serviceChale.Update(chale);
+            return new JsonResult(true);
+        }
 
-            _serviceChale.Add(chale);
-            return View();
+        [HttpDelete("Remove")]
+        public JsonResult Remove(Chale chale)
+        {
+            _serviceChale.Remove(chale);
+            return new JsonResult(true);
         }
 
     }

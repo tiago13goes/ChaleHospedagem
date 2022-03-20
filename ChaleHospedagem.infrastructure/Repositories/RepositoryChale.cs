@@ -25,7 +25,7 @@ namespace ChaleHospedagem.Infrastructure.Repositories
             {
                 this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -34,46 +34,50 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public void Add(Chale obj)
         {
-            //var sql = "INSERT INTO @tableName (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES(@localizacao, @capacidade, @valorAltaEstacao, @valorBaixaEstacao)";
-            var sql = string.Format("INSERT INTO {0} (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES('{1}', {2}, {3}, {4})", tableName, obj.localizacao, obj.capacidade, (double)obj.valorAltaEstacao, (double)obj.valorBaixaEstacao);
-            
-            var result = db.Query<Chale>(sql);
+            var sql = string.Format("INSERT INTO {0} (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES('{1}', {2}, {3}, {4})",
+                                    tableName,
+                                    obj.localizacao,
+                                    obj.capacidade,
+                                    (double)obj.valorAltaEstacao,
+                                    (double)obj.valorBaixaEstacao);
+
+            Chale result = db.Query<Chale>(sql).FirstOrDefault();
         }
 
         public IEnumerable<Chale> GetAll()
         {
-            var sql = "SELECT * FROM @tableName";
-            var result = db.Query<Chale>(sql, new { @tableName = this.tableName });
+            var sql = string.Format("SELECT * FROM {0}", tableName);
+            var result = db.Query<Chale>(sql);
             return result;
         }
 
         public Chale GetById(int id)
         {
-            var sql = "SELECT * FROM @tableName WHERE codChale = @id";
-            var result = db.Query<Chale>(sql, new { @id = id, @tableName = this.tableName }).SingleOrDefault();
+            var sql = string.Format("SELECT * FROM {0} WHERE codChale = {1}", tableName, id);
+            var result = db.Query<Chale>(sql).SingleOrDefault();
             return result;
         }
 
         public void Remove(Chale obj)
         {
-            var sql = "DELETE FROM @tableName WHERE codChale = @id";
-            var result = db.Query<Chale>(sql, new { @id = obj.codChale, @tableName = this.tableName}).SingleOrDefault();
+            var sql = string.Format("DELETE FROM {0} WHERE codChale = {1}", tableName, obj.codChale);
+            var result = db.Query<Chale>(sql).FirstOrDefault();
         }
 
         public void Update(Chale obj)
         {
-            var sql = "UPDATE @tableName SET localizacao = @localizacao, capacidade = @capacidade, valorAltaEstacao = @valorAltaEstacao, valorBaixaEstacao = @valorBaixaEstacao WHERE codChale = @id";
-            var result = db.Query<Chale>(sql, new
-            {
-                @id = obj.codChale,
-                @localizacao = obj.localizacao,
-                @capacidade = obj.capacidade,
-                @valorAltaEstacao = obj.valorAltaEstacao,
-                @valorBaixaEstacao = obj.valorBaixaEstacao,
-                @tableName = this.tableName
-            });
+            var sql = string.Format("UPDATE {0} SET localizacao = '{1}', capacidade = {2}, valorAltaEstacao = {3}, valorBaixaEstacao = {4} WHERE codChale = {5}",
+                                   this.tableName,
+                                   obj.localizacao,
+                                   obj.capacidade,
+                                   obj.valorAltaEstacao,
+                                   obj.valorBaixaEstacao,
+                                   obj.codChale
+                                   );
 
-            throw new NotImplementedException();
+            var result = db.QueryFirstOrDefault<dynamic>(sql);
+            
+
         }
     }
 }
