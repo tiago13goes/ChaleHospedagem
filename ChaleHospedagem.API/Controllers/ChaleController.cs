@@ -34,9 +34,9 @@ namespace ChaleHospedagem.API.Controllers
             Chale chale = new Chale()
             {
                 capacidade = 1,
-                localizacao = 1,
-                valorAltaEstacao = 120,
-                valorBaixaEstacao = 120
+                localizacao = "São Paulo - SP",
+                valorAltaEstacao = 120.99,
+                valorBaixaEstacao = 99.99
             };
 
             _serviceChale.Add(chale);

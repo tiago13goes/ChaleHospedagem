@@ -9,6 +9,7 @@ using System.Data;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using Dapper;
+using NUnit.Framework;
 
 namespace ChaleHospedagem.Infrastructure.Repositories
 {
@@ -19,6 +20,7 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public RepositoryChale(IConfiguration configuration)
         {
+            this.tableName = "Chale";
             try
             {
                 this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
@@ -32,28 +34,45 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public void Add(Chale obj)
         {
-            var sql = "SELECT * FROM " + tableName;
-            db.Query<Chale>(sql);
-            throw new NotImplementedException();
+            //var sql = "INSERT INTO @tableName (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES(@localizacao, @capacidade, @valorAltaEstacao, @valorBaixaEstacao)";
+            var sql = string.Format("INSERT INTO {0} (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES('{1}', {2}, {3}, {4})", tableName, obj.localizacao, obj.capacidade, (double)obj.valorAltaEstacao, (double)obj.valorBaixaEstacao);
+            
+            var result = db.Query<Chale>(sql);
         }
 
         public IEnumerable<Chale> GetAll()
         {
-            throw new NotImplementedException();
+            var sql = "SELECT * FROM @tableName";
+            var result = db.Query<Chale>(sql, new { @tableName = this.tableName });
+            return result;
         }
 
         public Chale GetById(int id)
         {
-            throw new NotImplementedException();
+            var sql = "SELECT * FROM @tableName WHERE codChale = @id";
+            var result = db.Query<Chale>(sql, new { @id = id, @tableName = this.tableName }).SingleOrDefault();
+            return result;
         }
 
         public void Remove(Chale obj)
         {
-            throw new NotImplementedException();
+            var sql = "DELETE FROM @tableName WHERE codChale = @id";
+            var result = db.Query<Chale>(sql, new { @id = obj.codChale, @tableName = this.tableName}).SingleOrDefault();
         }
 
         public void Update(Chale obj)
         {
+            var sql = "UPDATE @tableName SET localizacao = @localizacao, capacidade = @capacidade, valorAltaEstacao = @valorAltaEstacao, valorBaixaEstacao = @valorBaixaEstacao WHERE codChale = @id";
+            var result = db.Query<Chale>(sql, new
+            {
+                @id = obj.codChale,
+                @localizacao = obj.localizacao,
+                @capacidade = obj.capacidade,
+                @valorAltaEstacao = obj.valorAltaEstacao,
+                @valorBaixaEstacao = obj.valorBaixaEstacao,
+                @tableName = this.tableName
+            });
+
             throw new NotImplementedException();
         }
     }

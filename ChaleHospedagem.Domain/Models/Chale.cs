@@ -10,9 +10,9 @@ namespace ChaleHospedagem.Domain.Models
     {
         //[Key]
         public int codChale { get; set; }
-        public int localizacao { get; set; }
+        public string localizacao { get; set; }
         public int capacidade { get; set; }
-        public int valorAltaEstacao { get; set; }
-        public int valorBaixaEstacao { get; set; }
+        public double valorAltaEstacao { get; set; }
+        public double valorBaixaEstacao { get; set; }
     }
 }
