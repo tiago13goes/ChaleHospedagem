@@ -10,44 +10,44 @@ namespace ChaleHospedagem.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ClienteController : Controller
+    public class HospedagemController : Controller
     {
-        private readonly IServiceCliente _serviceCliente;
+        private readonly IServiceHospedagem _serviceHospedagem;
 
-        public ClienteController(IServiceCliente serviceCliente)
+        public HospedagemController(IServiceHospedagem serviceHospedagem)
         {
-            _serviceCliente = serviceCliente;
+            _serviceHospedagem = serviceHospedagem;
         }
 
         [HttpPost("Add")]
-        public JsonResult Add(Cliente Cliente)
+        public JsonResult Add(Hospedagem Hospedagem)
         {
-            return new JsonResult(_serviceCliente.Add(Cliente));
+            return new JsonResult(_serviceHospedagem.Add(Hospedagem));
         }
 
         [HttpGet("GetAll")]
         public JsonResult GetAll()
         {
-            return new JsonResult(_serviceCliente.GetAll());
+            return new JsonResult(_serviceHospedagem.GetAll());
         }
 
         [HttpGet("GetById")]
         public JsonResult GetById(int id)
         {
-            return new JsonResult(_serviceCliente.GetByCod(id));
+            return new JsonResult(_serviceHospedagem.GetByCod(id));
         }
 
 
         [HttpPut("Update")]
-        public JsonResult Update(Cliente Cliente)
+        public JsonResult Update(Hospedagem Hospedagem)
         {
-            return new JsonResult(_serviceCliente.Update(Cliente));
+            return new JsonResult(_serviceHospedagem.Update(Hospedagem));
         }
 
         [HttpDelete("Remove")]
         public JsonResult Remove(int cod)
         {
-            return new JsonResult(_serviceCliente.Remove(cod));
+            return new JsonResult(_serviceHospedagem.Remove(cod));
         }
 
     }
