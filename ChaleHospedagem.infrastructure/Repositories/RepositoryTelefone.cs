@@ -14,8 +14,8 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 {
     public class RepositoryTelefone : IRepositoryTelefone
     {
-        private IDbConnection db;
-        private string tableName = "Telefone";
+        private readonly IDbConnection db;
+        private readonly string tableName = "Telefone";
 
         public RepositoryTelefone(IConfiguration configuration)
         {
@@ -69,10 +69,7 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public bool Remove(Telefone telefone)
         {
-            var query = string.Format("DELETE FROM {0} WHERE codTelefone = '{1}' AND codCliente = {1}",
-                                    tableName,
-                                    telefone.telefone,
-                                    telefone.codCliente);
+            var query = $"DELETE FROM {tableName} WHERE codTelefone = '{telefone.telefone}' AND codCliente = {telefone.telefone}";
 
             try
             {

@@ -14,8 +14,8 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 {
     public class RepositoryServico : IRepositoryServico
     {
-        private IDbConnection db;
-        private string tableName = "Servico";
+        private readonly IDbConnection db;
+        private readonly string tableName = "Servico";
 
         public RepositoryServico(IConfiguration configuration)
         {

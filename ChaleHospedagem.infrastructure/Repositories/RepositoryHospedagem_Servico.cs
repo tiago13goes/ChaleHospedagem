@@ -14,8 +14,8 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 {
     public class RepositoryHospedagem_Servico : IRepositoryHospedagem_Servico
     {
-        private IDbConnection db;
-        private string tableName = "Hospedagem_Servico";
+        private readonly IDbConnection db;
+        private readonly string tableName = "Hospedagem_Servico";
 
         public RepositoryHospedagem_Servico(IConfiguration configuration)
         {

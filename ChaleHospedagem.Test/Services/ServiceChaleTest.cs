@@ -31,7 +31,7 @@ namespace ChaleHospedagem.Test.Services
         [Fact]
         public void Post_Chale()
         {
-            Chale chale = new Chale()
+            Chale chale = new()
             {
                 codChale = 0,
                 capacidade = 9999999,

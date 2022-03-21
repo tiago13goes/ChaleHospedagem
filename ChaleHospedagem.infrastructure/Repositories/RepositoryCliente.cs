@@ -14,12 +14,11 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 {
     public class RepositoryCliente : IRepositoryCliente
     {
-        private IDbConnection db;
+        private readonly IDbConnection db;
         private readonly string tableName = "Cliente";
 
         public RepositoryCliente(IConfiguration configuration)
         {
-            this.tableName = "Cliente";
             try
             {
                 this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
