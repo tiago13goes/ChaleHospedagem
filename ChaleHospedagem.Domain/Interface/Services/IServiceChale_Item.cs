@@ -10,5 +10,6 @@ namespace ChaleHospedagem.Domain.Interface.Services
 {
     public interface IServiceChale_Item : IServiceBase<Chale_Item>
     {
+        bool Remove(Chale_Item obj);
     }
 }

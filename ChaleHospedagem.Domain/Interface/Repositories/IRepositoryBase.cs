@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChaleHospedagem.Domain.Interface.Repository
+namespace ChaleHospedagem.Domain.Interface.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

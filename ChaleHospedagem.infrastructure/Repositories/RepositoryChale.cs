@@ -33,7 +33,6 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public bool Add(Chale obj)
         {
-            bool success = false;
             var sql = string.Format("INSERT INTO {0} (localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao) VALUES('{1}', {2}, {3}, {4})",
                                     tableName,
                                     obj.localizacao,
@@ -43,14 +42,12 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
             try
             {
-                success = db.Execute(sql) > 0;
+                return db.Execute(sql) > 0;
             }
             catch (Exception ex)
             {
-
+                throw;
             }
-
-            return success;
         }
 
 
@@ -71,26 +68,23 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
         public bool Remove(int cod)
         {
-            bool success = false;
             var query = string.Format("DELETE FROM {0} WHERE codChale = {1}",
                                     tableName,
                                     cod);
 
             try
             {
-                success = db.Execute(query) > 0;
+                return db.Execute(query) > 0;
             }
             catch (Exception ex)
             {
-
+                throw;
             }
 
-            return success;
         }
 
         public bool Update(Chale obj)
         {
-            bool success = false;
             var query = "UPDATE " + tableName + " SET localizacao = @localizacao, capacidade = @capacidade, valorAltaEstacao = @valorAltaEstacao, valorBaixaEstacao = @valorBaixaEstacao WHERE codChale = @codChale";
 
             var parameters = new DynamicParameters();
@@ -102,14 +96,12 @@ namespace ChaleHospedagem.Infrastructure.Repositories
 
             try
             {
-                success = db.Execute(query, parameters) > 0;
+                return db.Execute(query, parameters) > 0;
             }
             catch (Exception ex)
             {
-
+                throw;
             }
-
-            return success;
         }
     }
 }

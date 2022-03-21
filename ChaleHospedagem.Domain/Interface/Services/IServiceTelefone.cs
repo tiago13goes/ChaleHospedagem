@@ -10,5 +10,6 @@ namespace ChaleHospedagem.Domain.Interface.Services
 {
     public interface IServiceTelefone : IServiceBase<Telefone>
     {
+        bool Remove(Telefone telefone);
     }
 }

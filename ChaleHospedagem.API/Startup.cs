@@ -1,5 +1,4 @@
 using ChaleHospedagem.Domain.Interface.Repositories;
-using ChaleHospedagem.Domain.Interface.Repository;
 using ChaleHospedagem.Domain.Interface.Service;
 using ChaleHospedagem.Domain.Interface.Services;
 using ChaleHospedagem.Domain.Services;
@@ -62,13 +61,13 @@ namespace ChaleHospedagem.API
             #region Repositório
 
             services.AddScoped<IRepositoryChale, RepositoryChale>();
-            //services.AddScoped<IRepositoryChale_Item, RepositoryChale_Item>();
-            //services.AddScoped<IRepositoryCliente, RepositoryCliente>();
-            //services.AddScoped<IRepositoryHospedagem, RepositoryHospedagem>();
-            //services.AddScoped<IRepositoryHospedagem_Servico, RepositoryHospedagemServico>();
-            //services.AddScoped<IRepositoryItem, RepositoryItem>();
-            //services.AddScoped<IRepositoryServico, RepositoryServico>();
-            //services.AddScoped<IRepositoryTelefone, RepositoryTelefone>();
+            services.AddScoped<IRepositoryChale_Item, RepositoryChale_Item>();
+            services.AddScoped<IRepositoryCliente, RepositoryCliente>();
+            services.AddScoped<IRepositoryHospedagem, RepositoryHospedagem>();
+            services.AddScoped<IRepositoryHospedagem_Servico, RepositoryHospedagem_Servico>();
+            services.AddScoped<IRepositoryItem, RepositoryItem>();
+            services.AddScoped<IRepositoryServico, RepositoryServico>();
+            services.AddScoped<IRepositoryTelefone, RepositoryTelefone>();
 
 
             #endregion

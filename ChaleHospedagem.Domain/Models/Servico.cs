@@ -11,6 +11,7 @@ namespace ChaleHospedagem.Domain.Models
         //PK
         //[Key]
         public int codServico { get; set; }
+        public string nomeServico { get; set; }
         public double valorServico { get; set; }
     }
 }

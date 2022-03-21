@@ -1,4 +1,4 @@
-﻿using ChaleHospedagem.Domain.Interface.Repository;
+﻿using ChaleHospedagem.Domain.Interface.Repositories;
 using ChaleHospedagem.Domain.Interface.Service;
 using System;
 using System.Collections.Generic;

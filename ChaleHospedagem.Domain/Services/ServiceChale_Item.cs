@@ -41,6 +41,11 @@ namespace ChaleHospedagem.Domain.Services
             return _repository.Remove(cod);
         }
 
+        public bool Remove(Chale_Item obj)
+        {
+            return _repository.Remove(obj);
+        }
+
         public bool Update(Chale_Item obj)
         {
             return _repository.Update(obj);

@@ -1,5 +1,4 @@
-﻿using ChaleHospedagem.Domain.Interface.Repository;
-using ChaleHospedagem.Domain.Models;
+﻿using ChaleHospedagem.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +9,7 @@ namespace ChaleHospedagem.Domain.Interface.Repositories
 {
     public interface IRepositoryItem : IRepositoryBase<Item>
     {
+        bool Remove(string item);
+        Item GetByNomeItem(string item);
     }
 }

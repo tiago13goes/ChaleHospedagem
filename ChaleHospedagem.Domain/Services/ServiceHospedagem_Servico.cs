@@ -36,9 +36,19 @@ namespace ChaleHospedagem.Domain.Services
             return _repository.GetByCod(cod);
         }
 
+        public Hospedagem_Servico GetByHospedagemServico(Hospedagem_Servico obj)
+        {
+            return _repository.GetByHospedagemServico(obj);
+        }
+
         public bool Remove(int cod)
         {
             return _repository.Remove(cod);
+        }
+
+        public bool Remove(Hospedagem_Servico obj)
+        {
+            return _repository.Remove(obj);
         }
 
         public bool Update(Hospedagem_Servico obj)

@@ -10,5 +10,7 @@ namespace ChaleHospedagem.Domain.Interface.Services
 {
     public interface IServiceHospedagem_Servico : IServiceBase<Hospedagem_Servico>
     {
+        bool Remove(Hospedagem_Servico obj);
+        Hospedagem_Servico GetByHospedagemServico(Hospedagem_Servico obj);
     }
 }

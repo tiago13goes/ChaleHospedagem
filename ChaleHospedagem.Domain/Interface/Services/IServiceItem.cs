@@ -10,5 +10,7 @@ namespace ChaleHospedagem.Domain.Interface.Services
 {
     public interface IServiceItem : IServiceBase<Item>
     {
+        bool Remove(string item);
+        Item GetByNomeItem(string item);
     }
 }

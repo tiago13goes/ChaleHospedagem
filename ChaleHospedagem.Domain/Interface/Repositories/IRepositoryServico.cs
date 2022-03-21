@@ -1,5 +1,4 @@
-﻿using ChaleHospedagem.Domain.Interface.Repository;
-using ChaleHospedagem.Domain.Models;
+﻿using ChaleHospedagem.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
