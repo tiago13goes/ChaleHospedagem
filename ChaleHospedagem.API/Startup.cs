@@ -48,15 +48,27 @@ namespace ChaleHospedagem.API
         {
             #region Servicos
 
-            //services.AddScoped<IServiceCliente, ServiceCliente>();
             services.AddScoped<IServiceChale, ServiceChale>();
+            services.AddScoped<IServiceChale_Item, ServiceChale_Item>();
+            services.AddScoped<IServiceCliente, ServiceCliente>();
+            services.AddScoped<IServiceHospedagem, ServiceHospedagem>();
+            services.AddScoped<IServiceHospedagem_Servico, ServiceHospedagem_Servico>();
+            services.AddScoped<IServiceItem, ServiceItem>();
+            services.AddScoped<IServiceServico, ServiceServico>();
+            services.AddScoped<IServiceTelefone, ServiceTelefone>();
 
             #endregion
 
             #region Repositório
 
+            services.AddScoped<IRepositoryChale, RepositoryChale>();
+            //services.AddScoped<IRepositoryChale_Item, RepositoryChale_Item>();
             //services.AddScoped<IRepositoryCliente, RepositoryCliente>();
-            services.AddScoped<IRepositoryChale, RepositoryChale>(); //why RepositoryChale is not being referenced????
+            //services.AddScoped<IRepositoryHospedagem, RepositoryHospedagem>();
+            //services.AddScoped<IRepositoryHospedagem_Servico, RepositoryHospedagemServico>();
+            //services.AddScoped<IRepositoryItem, RepositoryItem>();
+            //services.AddScoped<IRepositoryServico, RepositoryServico>();
+            //services.AddScoped<IRepositoryTelefone, RepositoryTelefone>();
 
 
             #endregion
