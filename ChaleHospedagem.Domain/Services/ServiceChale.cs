@@ -24,7 +24,7 @@ namespace ChaleHospedagem.Domain.Services
         {
             return _repository.Add(obj);
         }
-
+        
         public IEnumerable<Chale> GetAll()
         {
             return _repository.GetAll();
